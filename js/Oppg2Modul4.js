@@ -8,13 +8,11 @@ let lastTime = 0.0;
 let controls;
 let bicycle;
 let SIZE = 200;
-let speedVector = new THREE.Vector3(3,0,1);
 
 let currentlyPressedKeys = {};
 
 import * as THREE from '../../lib/three/build/three.module.js';
 import { TrackballControls } from '../../lib/three/examples/jsm/controls/TrackballControls.js';
-import { addCoordSystem } from "../../lib/wfa-coord.js";
 
 export function main()
 {
@@ -54,13 +52,9 @@ export function main()
 
     addModels();
 
-    addCoordSystem(scene);
-
     controls = new TrackballControls(camera, renderer.domElement);
     controls.addEventListener( 'change', render);
-
     window.addEventListener('resize', onWindowResize, false);
-
     document.addEventListener('keyup', handleKeyUp, false);
     document.addEventListener('keydown', handleKeyDown, false);
 }
@@ -78,7 +72,7 @@ function handleKeyDown(event)
 function addModels()
 {
     let gPlane = new THREE.PlaneGeometry( SIZE*2, SIZE*2 );
-    let mPlane = new THREE.MeshLambertMaterial( {color: 0x97affff, side: THREE.DoubleSide } );
+    let mPlane = new THREE.MeshLambertMaterial( {color: 0x13afdf, side: THREE.DoubleSide } );
     let meshPlane = new THREE.Mesh( gPlane, mPlane);
     meshPlane.rotation.x = Math.PI / 2;
     meshPlane.receiveShadow = true;	//NB!
